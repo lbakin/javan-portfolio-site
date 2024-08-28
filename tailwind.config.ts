@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '56.25%': '56.25%', // 16:9 aspect ratio
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
