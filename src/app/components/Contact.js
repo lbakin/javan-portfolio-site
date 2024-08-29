@@ -1,9 +1,34 @@
-export default function Contact({ id }) {
+export default function Contact({id}) {
   return (
-    <section id={id} className="py-8 p-4 bg-indigo-300">
-      <h2 className="text-2xl font-bold mb-4">Contact</h2>
-      <p>Email: <a href="mailto:your.email@example.com" className="text-blue-500">javanivey@gmail.com</a></p>
-      {/* <p>Social Media: <a href="https://twitter.com/yourprofile" className="text-blue-500">@yourprofile</a></p> */}
+    <section id={id} className="p-8 bg-custom-pattern text-white text-center sm:text-left">
+      <h2 className="text-2xl font-medium mb-6">Get in touch</h2>
+      <div className="flex flex-col sm:flex-row items-center sm:justify-between space-y-4 sm:space-y-0">
+        <div className="flex flex-col items-center sm:items-start">
+          <a href="mailto:javanivey@gmail.com" className="text-lg font-medium text-teal-200 tracking-wider hover:underline">
+            javanivey@gmail.com
+          </a>
+        </div>
+        <div className="flex space-x-6 mt-4 sm:mt-0 text-teal-200">
+          {/* Instagram */}
+          <a href="https://www.instagram.com/javanable" className=" hover:text-white transition-colors duration-300">
+            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.314 3.608 1.29.975.976 1.228 2.243 1.29 3.608.058 1.266.07 1.646.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.314 2.633-1.29 3.609-.975.975-2.243 1.228-3.608 1.29-1.266.058-1.646.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.314-3.609-1.29-.975-.975-1.227-2.243-1.289-3.608C2.175 15.646 2.163 15.266 2.163 12s.012-3.584.07-4.849c.062-1.366.314-2.633 1.29-3.609.975-.975 2.243-1.227 3.608-1.289C8.417 2.175 8.797 2.163 12 2.163zm0-2.163C8.735 0 8.332.013 7.052.073 5.771.133 4.68.381 3.785 1.276c-.896.896-1.143 1.986-1.204 3.268C2.013 6.665 2 7.068 2 10.333s.013 3.668.073 4.948c.061 1.282.308 2.372 1.204 3.268.896.896 1.986 1.143 3.268 1.204 1.28.06 1.683.073 4.948.073s3.668-.013 4.948-.073c1.282-.061 2.372-.308 3.268-1.204.896-.896 1.143-1.986 1.204-3.268.06-1.28.073-1.683.073-4.948s-.013-3.668-.073-4.948c-.061-1.282-.308-2.372-1.204-3.268-.896-.896-1.986-1.143-3.268-1.204-1.28-.06-1.683-.073-4.948-.073zM12 5.838a6.162 6.162 0 1 0 6.162 6.162A6.162 6.162 0 0 0 12 5.838zm0 10.162a3.998 3.998 0 1 1 3.998-3.998A3.998 3.998 0 0 1 12 16zm6.406-10.845a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/>
+            </svg>
+          </a>
+          {/* Vimeo */}
+          <a href="http://vimeo.com/javanivey" className=" hover:text-white transition-colors duration-300">
+            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.977 7.428c-.109 2.455-1.812 5.832-5.109 10.124-3.42 4.532-6.305 6.799-8.651 6.799-1.464 0-2.703-1.347-3.718-4.041-.676-2.476-1.354-4.951-2.028-7.429-.751-2.729-1.553-4.095-2.404-4.095-.185 0-.83.387-1.932 1.159L0 8.97c1.223-.997 2.426-1.994 3.616-2.99 1.633-1.346 2.859-2.073 3.676-2.178 1.932-.187 3.117 1.136 3.553 3.963.479 3.091.812 5.019.998 5.786.553 2.516 1.16 3.773 1.821 3.773.514 0 1.286-.748 2.318-2.245 1.034-1.497 1.589-2.633 1.666-3.406.147-1.387-.402-2.082-1.643-2.082-.584 0-1.184.131-1.8.393 1.198-3.92 3.49-5.828 6.872-5.713 2.504.073 3.683 1.685 3.537 4.849z"/>
+            </svg>
+          </a>
+          {/* LinkedIn */}
+          <a href="https://linkedin.com/in/javan" className=" hover:text-white transition-colors duration-300">
+            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.23 0H1.77C.791 0 0 .792 0 1.77v20.459C0 23.209.792 24 1.77 24h20.459C23.208 24 24 23.208 24 22.229V1.77C24 .792 23.209 0 22.23 0zM7.09 20.452H3.537V9.034H7.09v11.418zM5.314 7.764c-1.132 0-2.051-.92-2.051-2.051 0-1.131.919-2.051 2.051-2.051 1.132 0 2.051.92 2.051 2.051 0 1.131-.919 2.051-2.051 2.051zm15.137 12.688h-3.553V14.7c0-1.372-.029-3.135-1.911-3.135-1.91 0-2.202 1.494-2.202 3.037v5.849H8.707V9.034h3.411v1.561h.047c.476-.902 1.638-1.854 3.371-1.854 3.605 0 4.27 2.372 4.27 5.455v6.256z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

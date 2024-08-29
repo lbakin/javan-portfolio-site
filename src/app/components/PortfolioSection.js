@@ -39,8 +39,8 @@ export default function PortfolioSection({ title, reelUrls, images, id, sectionS
   };
 
   return (
-    <section id={id} className={`py-10 px-12 ${sectionStyle}`}>
-      <h2 className={`text-2xl text-center font-bold mb-4 sticky top-0 ${sectionStyle} text-black py-2 z-10`}>{title}</h2>
+    <section id={id} className={`py-8 px-12 ${sectionStyle}`}>
+      <h2 className={`text-2xl text-center font-bold mb-8 sticky top-0 ${sectionStyle} text-black py-4 z-10`}>{title}</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         {reelUrls.map((reelUrl, index) => (

@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Cabin', 'sans-serif'], // Default body text font
+        josefin: ['Josefin Sans', 'sans-serif'], // Header font
+      },
       spacing: {
         '56.25%': '56.25%', // 16:9 aspect ratio
       },
@@ -18,6 +22,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  
+  ],
 };
 export default config;
