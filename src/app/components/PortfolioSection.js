@@ -6,10 +6,11 @@ export default function PortfolioSection({ title, reelUrls, images, id, sectionS
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const lightboxRef = useRef(null)
-  const videoRefs = reelUrls.map(() => useRef(null));
+  
+  const videoRefs = useRef(reelUrls.map(() => null));
 
   const handleFullScreen = (index) => {
-    const videoRef = videoRefs[index].current;
+    const videoRef = videoRefs.current[index];
     if (videoRef) {
       if (videoRef.requestFullscreen) {
         videoRef.requestFullscreen();
@@ -44,7 +45,7 @@ export default function PortfolioSection({ title, reelUrls, images, id, sectionS
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         {reelUrls.map((reelUrl, index) => (
           <div key={index} className="relative w-full pb-56.25% h-0">
-            <video ref={videoRefs[index]} controls className="absolute top-0 left-0 w-full h-full object-cover">
+            <video ref={videoRefs.current[index]} controls className="absolute top-0 left-0 w-full h-full object-cover">
               <source src={reelUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
