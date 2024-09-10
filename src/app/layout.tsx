@@ -16,12 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
+      <Head>
        <link
           href="https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;700&family=Josefin+Sans:wght@300;400;500;700&display=swap"
           rel="stylesheet"
         />
-      
+      </Head>
       <body className="font-sans">
         <Nav />
         <main>
