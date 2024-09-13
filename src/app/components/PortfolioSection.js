@@ -7,7 +7,7 @@ export default function PortfolioSection({ title, reelUrls, images, id, sectionS
   const [currentImage, setCurrentImage] = useState(null);
   const lightboxRef = useRef(null)
   
-  const videoRefs = useRef(reelUrls.map(() => null));
+  const videoRefs = useRef(reelUrls ? reelUrls.map(() => null) : []);
 
   // const handleFullScreen = (index) => {
   //   const videoRef = videoRefs.current[index];
@@ -37,27 +37,59 @@ export default function PortfolioSection({ title, reelUrls, images, id, sectionS
       closeLightbox();
     }
   };
-  const videoGridClass = reelUrls.length === 1 ? 'justify-center lg:w-1/2 mx-auto' : 'lg:grid-cols-2';
+  const videoGridClass = reelUrls && reelUrls.length === 1 ? 'justify-center lg:w-1/2 mx-auto' : 'lg:grid-cols-2';
 
   return (
     <section id={id} className={`py-8 px-12 ${sectionStyle}`}>
       <h2 className={`text-2xl text-center font-bold mb-8 sticky top-0 ${sectionStyle} text-[#e2a43d] py-4 z-10`}>{title}</h2>
 
+      {/* Video section */}
       <div className={`grid grid-cols-1 ${videoGridClass} gap-12 mb-12`}>
-        {reelUrls.map((reelUrl, index) => (
-          <div key={index} className="relative w-full pb-56.25% h-0">
-            <video ref={videoRefs.current[index]} controls className="absolute top-0 left-0 w-full h-full object-cover">
-              <source src={reelUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        ))}
+      {reelUrls.map((reel, index) => {
+          const { type, url } = reel; // Destructure the type and url from each reel object
+          
+          // Render different types of video sources
+          return (
+            <div key={index} className="relative w-full pb-56.25% h-0">
+              {type === 'youtube' ? (
+                <iframe
+                  src={url.replace("watch?v=", "embed/")}
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              ) : type === 'vimeo' ? (
+                <iframe
+                  src={url.replace("vimeo.com", "player.vimeo.com/video")}
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              ) : type === 'file' ? (
+                <video
+                  ref={videoRefs.current[index]} 
+                  controls 
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                >
+                  <source src={url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <p>Invalid video source</p>
+              )}
+            </div>
+          );
+        })}
       </div>
 
+      {/* Image gallery section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {images.map((image, index) => (
           <div key={index} className="relative group cursor-pointer">
-            <div className="relative w-full h-64 lg:h-96 bg-indigo-300 overflow-hidden ">
+            <div 
+              className="relative w-full h-64 lg:h-96 bg-indigo-300 overflow-hidden" 
+              onClick={() => openLightbox(image)}
+            >
               <img
                 src={image.src}
                 alt={image.alt}

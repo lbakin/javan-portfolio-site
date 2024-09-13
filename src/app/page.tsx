@@ -2,12 +2,32 @@ import Header from "./components/Header"
 import PortfolioSection from "./components/PortfolioSection"
 import About from './components/About';
 import Contact from './components/Contact';
+import sanityCli from "../../sanity.cli";
+import { sanityClient } from "./sanity"
+import { portfolioSectionsQuery } from './queries';  // Import the centralized query
 
-export default function Home() {
+export default async function Home() {
+  // Fetch portfolio sections data using the Sanity client
+  const portfolioSections = await sanityClient.fetch(portfolioSectionsQuery);
+
   return (
-    <div>      
+    <div>
       <Header />
+
       <div className="">
+        {/* Dynamically rendered Portfolio Sections */}
+        {portfolioSections.map((section) => (
+          <PortfolioSection
+            key={section.id}
+            title={section.title}
+            reelUrls={section.reelUrls}
+            images={section.images}
+            id={section.id}
+            sectionStyle={section.sectionStyle}
+          />
+        ))}
+
+        {/* Hardcoded Portfolio Sections */}
 
       
         <PortfolioSection
